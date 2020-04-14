@@ -63,20 +63,13 @@ module.exports = {
   },
 
   hooks: {
-    // generate: {
-    //   done (generator) {
-    //     // Copy dist files to public/_nuxt
-    //     if (generator.nuxt.options.dev === false && generator.nuxt.options.mode === 'spa') {
-    //       const public = join(generator.nuxt.options.rootDir, 'public')
-    //       const publicDir = join(generator.nuxt.options.rootDir, 'public', '_nuxt')
-    //       removeSync(publicDir)
-    //       copySync(join(generator.nuxt.options.generate.dir, '_nuxt'), publicDir)
-    //       copySync(join(generator.nuxt.options.generate.dir, '404.html'), join(public, 'index.html'))
-    //       copySync(join(generator.nuxt.options.generate.dir, '404.html'), join(public, '200.html'))
-    //       copySync(join(generator.nuxt.options.generate.dir, '404.html'), join(public, '404.html'))
-    //       removeSync(generator.nuxt.options.generate.dir)
-    //     }
-    //   }
-    // }
+    generate: {
+      done (generator) {
+        if (generator.nuxt.options.dev === false && generator.nuxt.options.mode === 'spa') {
+          const distDir = generator.nuxt.options.generate.dir;
+          copySync(join(distDir, '404.html'), join(distDir, 'index.html'))
+        }
+      }
+    }
   }
 }

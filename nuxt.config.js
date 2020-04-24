@@ -55,8 +55,13 @@ module.exports = {
   ],
 
   modules: [
-    '@nuxtjs/router'
+    '@nuxtjs/router',
+    'bootstrap-vue/nuxt'
   ],
+
+  bootstrapVue: {
+    icons: true // Install the IconsPlugin (in addition to BootStrapVue plugin
+  },
 
   build: {
     extractCSS: true

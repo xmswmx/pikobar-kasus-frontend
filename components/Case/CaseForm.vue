@@ -29,13 +29,16 @@
               type="text"
             ></b-form-input>
           </b-form-group>
-          
+
           <b-form-group id="group-ocupation" label="Pekerjaan:"
             label-for="ocupation">
             <b-form-select
               id="ocupation"
               v-model="form.ocupation"
-              :options="foods"
+              :options="references.occupations"
+              :disabled="state.processing"
+              value-field="id"
+              text-field="title"
             ></b-form-select>
           </b-form-group>
 
@@ -92,7 +95,7 @@
             <b-form-select
               id="gender"
               v-model="form.gender"
-              :options="foods"
+              :options="references.gender"
             ></b-form-select>
           </b-form-group>
 
@@ -145,15 +148,39 @@
           { text: 'WNI', value: 'WNI' },
           { text: 'WNA', value: 'WNA' }
         ],
-        show: true
+        references: {
+          gender: [
+            { text: 'Laki-laki', value: 'L' },
+            { text: 'Perempuan', value: 'P' }
+          ],
+          occupations: null
+        },
+        show: true,
+        state: {
+            processing: false
+        }
       }
     },
     methods: {
+      loadOccupations () {
+        this.state.processing = true
+        this.$api.getOccupations().then(res => {
+          this.references.occupations = res.data
+        })
+        .catch(e => e)
+        .finally(() => this.state.processing = false)
+      },
+
+      loadReferences () {
+        this.loadOccupations()
+      },
+  
       onSubmit(evt) {
         evt.preventDefault()
         this.$emit('action', 'case', this.form)
         alert(JSON.stringify(this.form))
       },
+
       onReset(evt) {
         evt.preventDefault()
         // Reset our form values
@@ -167,9 +194,13 @@
           this.show = true
         })
       },
+
       submit () {
         this.$emit('action', 'case', 2, this.form)
       }
-    }
+    },
+    mounted () {
+      this.loadReferences()
+    },
   }
 </script>

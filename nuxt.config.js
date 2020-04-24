@@ -12,7 +12,7 @@ module.exports = {
   srcDir: __dirname,
 
   env: {
-    apiUrl: process.env.API_URL || process.env.APP_URL + '/api',
+    apiUrl: process.env.API_URL,
     appName: process.env.APP_NAME || 'Laravel Nuxt',
     appLocale: process.env.APP_LOCALE || 'en',
     githubAuth: !!process.env.GITHUB_CLIENT_ID,
@@ -46,6 +46,7 @@ module.exports = {
 
   plugins: [
     '~components/global',
+    '~plugins/api',
     '~plugins/i18n',
     '~plugins/vform',
     '~plugins/axios',

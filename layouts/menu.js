@@ -29,7 +29,7 @@ export default {
       children: [
         {
           name: 'Buat Laporan Kasus',
-          url: '/base/breadcrumbs',
+          url: '/cases/create',
           icon: 'icon-puzzle'
         },
         {

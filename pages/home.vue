@@ -6,6 +6,7 @@
 
 <script>
 export default {
+  layout: 'backoffice',
   middleware: 'auth',
 
   head () {

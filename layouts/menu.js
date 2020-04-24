@@ -34,7 +34,7 @@ export default {
         },
         {
           name: 'List Kasus',
-          url: '/base/cards',
+          url: '/cases',
           icon: 'icon-puzzle'
         }
       ]

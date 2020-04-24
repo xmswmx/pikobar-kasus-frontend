@@ -25,6 +25,7 @@ const routes = [
       { path: 'password', name: 'settings.password', component: page('settings/password.vue') }
     ]},
 
+  { path: '/cases', name: 'cases.index', component: page('cases/index.vue') },
   { path: '/cases/create', name: 'cases.create', component: page('cases/create.vue') },
   
 ]

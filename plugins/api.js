@@ -1,5 +1,6 @@
-import axios from 'axios';
-import moduleReference from './api-modules/references';
+import axios from 'axios'
+import moduleCases from './api-modules/cases'
+import moduleReference from './api-modules/references'
 
 export default ({ app }, inject) => {
     inject('api', {
@@ -60,6 +61,7 @@ export default ({ app }, inject) => {
                 return Promise.resolve(options.cache);
             }
         },
-        ...moduleReference
+        ...moduleReference,
+        ...moduleCases
     });
 };

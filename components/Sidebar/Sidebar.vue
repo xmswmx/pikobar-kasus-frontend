@@ -65,7 +65,9 @@
                   </template>
                   <template v-else>
                     <!-- eslint-disable -->
-                    <SidebarNavItem:classes="item.class">
+                    <SidebarNavItem
+                      :classes="item.class"
+                    >
                       <SidebarNavLink
                         :name="childL1.name"
                         :url="childL1.url"
